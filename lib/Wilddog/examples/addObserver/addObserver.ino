@@ -1,12 +1,12 @@
 /*
   subscribe
 
-  This sketch demonstrate how to subscribe your data on Wilddog Yun
-  using an Arduino Yún.
+  This sketch demonstrate how to subscribe your data on Wilddog cloud
+  using Arduino.
 
   A Wilddog account are necessary to run all Wilddog examples. 
   If you don't already have one, you can register for a free Wilddog account at 
-  http://www.wilddog.com/ 
+  https://www.wilddog.com/ 
   
   In order to run this sketch, you'll need to creat an application using
   the Wilddog dashboard console at https://www.wilddog.com/dashboard. 
@@ -14,17 +14,17 @@
   https://YourAppId.wilddogio.com/
   Your data can add and save under that url,which will be access in this sketch. 
 
-  Note that since this sketch will access your data on WilddogYun,
-  your Arduino Yun need to connect to the Tnternet first.
+  Note that since this sketch will access your data on Wilddog cloud,
+  your Arduino need to connect to the Internet first.
   
   uasge:
   1. Creat an application on  https://www.wilddog.com/dashboard. 
      Add {"pin13":"1"} to your application which this sketch ask for.
             
   2. Modify YOURURL to your application.
-  3. Upload to your ArduinoYun.
+  3. Upload to your Arduino.
   4.Open the Arduino IDE's Serial port monitor,and it will print the cloud data.
-  5. Modify your application's data to {"pin13":"0"} and Take care L13 on your ArudinoYun.
+  5. Modify your application's data to {"pin13":"0"} and Take care L13 on your Arudino.
   
   
   This example code is in the public domain.
@@ -32,11 +32,13 @@
   created on 2015/11/20.
   by skyli.
   
-  http://www.wilddog.com/  
+  https://www.wilddog.com/  
   for more information.
 */
 #include <Wilddog.h>
 #include "Wilddog_utility.h"
+
+/*modify YourAppId to your appid*/
 #define YOURURL  "coap://YourAppId.wilddogio.com"
 #define _KEY_PIN  "pin"
 
@@ -102,12 +104,11 @@ void setup() {
   Serial.begin(9600);
   // Wait until a Serial Monitor is connected.
   while (!Serial);
-  Serial.print(YOURURL);
-  //wd.setValue(TEST_DATA,getcallbackFunc,(void*)NULL);
+  //Serial.print(YOURURL);
   
   Serial.print(YOURURL);
   p_wd = new  Wilddog(YOURURL);   
-  Serial.print("\n star addObserver \n");
+  Serial.print("\n start addObserver \n");
   
   res = p_wd->addObserver(WD_ET_VALUECHANGE,addObserverCallBack,(void*)NULL);
   if(res < 0 )
@@ -118,7 +119,7 @@ void setup() {
 
 void loop()
 {
-  Serial.print("trysyncing ...\n");   
+  //Serial.print("trysyncing ...\n");   
   if(p_wd)
     p_wd->trySync(); 
 }

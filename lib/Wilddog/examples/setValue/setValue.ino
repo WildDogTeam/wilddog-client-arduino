@@ -1,12 +1,12 @@
 /*
   Modify the cloud data
 
-  This sketch demonstrate how to Modify your Wilddog Yun's data
-  using an Arduino Yún.
+  This sketch demonstrate how to Modify your Wilddog cloud's data
+  using an Arduino.
 
   A Wilddog account are necessary to run all Wilddog examples. 
   If you don't already have one, you can register for a free Wilddog account at 
-  http://www.wilddog.com/ 
+  https://www.wilddog.com/ 
   
   In order to run this sketch, you'll need to creat an application using
   the Wilddog dashboard console at https://www.wilddog.com/dashboard. 
@@ -14,16 +14,16 @@
   https://YourAppId.wilddogio.com/
   Your data can add and save under that url,which will be access in this sketch. 
 
-  Note that since this sketch will access your data on WilddogYun,
-  your Arduino Yun need to connect to the Tnternet first.
+  Note that since this sketch will access your data on Wilddog cloud,
+  your Arduino need to connect to the Internet first.
   
   uasge:
   
   1. Creat an application on  https://www.wilddog.com/dashboard. 
      This sketch will push an message {"pin13":"1"}  to the application your just build.    
-  2. Modify YOURURL to your application.
-  3. Upload to your ArduinoYun.
-  4. You will see {"pin13":"0"} already on your application .
+  2. Modify YOURURL to your application url.
+  3. Upload to your Arduino.
+  4. You will see {"pin13":"0"} already on your application's data.
   
   
   This example code is in the public domain.
@@ -31,12 +31,13 @@
   created on 2015/11/20.
   by skyli.
   
-  http://www.wilddog.com/  
+  https://www.wilddog.com/  
   for more information.
 */
 
 #include <Wilddog.h>
 #include "Wilddog_utility.h"
+/*modify YourAppId to your appid*/
 #define YOURURL  "coap://YourAppId.wilddogio.com"
 #define SETTING_DATA "{\"pin13\":\"0\"}"
 
@@ -70,12 +71,12 @@ void setup() {
   // set value on Wilddog yun.
   res = p_wd->setValue(SETTING_DATA,setValueCallBack,(void*)NULL);
   if(res < 0 )
-     Serial.print("\n set value  fault \n ");
+     Serial.print("\n set value fail \n ");
 }
 
 void loop()
 {
-  Serial.print("trysyncing ...\n");   
+  //Serial.print("trysyncing ...\n");   
   // receive and transmit.
   if(p_wd)
     p_wd->trySync();
