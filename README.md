@@ -1,11 +1,11 @@
 ## 简介
-`wilddog-client-arduino` 是wilddog在`arduino`上的实现库，通过该库，Arduino Yun可以轻松访问和同步云端数据。目前`wilddog-client-arduino` 仅支持Arduino Yun，用户向`wilddog`云发送的请求是通过Arduino Yun的联网模块ar9331转发到云端的，我们的库有两部分，如下：
+`wilddog-client-arduino` 是wilddog在`arduino`上的实现库，通过该库，Arduino可以轻松访问和同步云端数据。目前`wilddog-client-arduino` 仅支持Arduino Yun，用户向`wilddog`云发送的请求是通过Arduino Yun的联网模块ar9331转发到云端的，我们的库有两部分，如下：
 
 	├── lib
 	├── platform
 
 	`lib`:Arduino IDE中的库，包含库代码、供用户调用的接口及示例.
-	`platform`:不同平台下的实现，在Arduino Yun中为守护进程及依赖库的ipk安装文件.
+	`platform`:不同平台下的实现，在Arduino Yun中是守护进程及依赖库的ipk安装文件.
 
 ## 使用步骤
 	
