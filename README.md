@@ -9,13 +9,7 @@
 
 ## 使用步骤
 	
-###第一步 创建账号和应用
-
-首先[**注册**](https://www.wilddog.com/account/signup)并登录Wilddog账号，进入控制面板。在控制面板中，添加一个新的应用。
-
-你会获得一个独一无二的应用`URL` `https://<appId>.wilddogio.com/`，在同步和存取数据的时候，你的数据将保存在这个`URL`下。
-
-###第二步 安装
+###第一步 安装
 
 ####1、配置ArduinoYun
 
@@ -81,7 +75,27 @@
 
 	1、把`wilddog` 放置到Arduino IDE的`libraries`目录下.
 	2、更新库，打开Arduino IDE，点击`项目-->管理库`，IDE会自动更新库，并在选择框里输入`wilddog`，出现下图说明库安装成功.
-	我们在`libraries\Wilddog\examples`下提供了丰富的范例供用户学习和测试.
+	
 
 ![](./doc/res/arduino_ide_updata.png )
 
+###第二步 创建账号和应用
+
+[**注册**](https://www.wilddog.com/account/signup)并登录Wilddog账号，进入控制面板。在控制面板中，添加一个新的应用。
+
+你会获得一个独一无二的应用`URL` `https://<appId>.wilddogio.com/`，在同步和存取数据的时候，你的数据将保存在这个`URL`下。
+
+###第三步 使用
+我们在`libraries\Wilddog\examples`下提供了丰富的范例供用户学习和测试.
+
+####API接口
+
+        int getValue(CallBackFunc f_callback,void *arg)
+        
+        int setValue(const char *p_data,CallBackFunc f_callback,void *arg)
+        int push(const char *p_data,CallBackFunc f_callback,void *arg)
+        int removeValue(CallBackFunc f_callback,void *arg)
+        int addObserver(Wilddog_EventType_T event,CallBackFunc f_callback,void *arg)
+        int removeObserver(Wilddog_EventType_T event)
+        int auth(const char *p_auth,const char *p_host,CallBackFunc onAuth,void *arg)
+        void trySync()
