@@ -86,16 +86,99 @@
 你会获得一个独一无二的应用`URL` `https://<appId>.wilddogio.com/`，在同步和存取数据的时候，你的数据将保存在这个`URL`下。
 
 ###第三步 使用
-我们在`libraries\Wilddog\examples`下提供了丰富的范例供用户学习和测试.
+我们在`libraries\Wilddog\examples`下提供了丰富的范例供用户学习和测试。
 
 ####API接口
 
-        int getValue(CallBackFunc f_callback,void *arg)
-        
-        int setValue(const char *p_data,CallBackFunc f_callback,void *arg)
-        int push(const char *p_data,CallBackFunc f_callback,void *arg)
-        int removeValue(CallBackFunc f_callback,void *arg)
-        int addObserver(Wilddog_EventType_T event,CallBackFunc f_callback,void *arg)
-        int removeObserver(Wilddog_EventType_T event)
-        int auth(const char *p_auth,const char *p_host,CallBackFunc onAuth,void *arg)
-        void trySync()
+new Wilddog
+
+	定义：new Wilddog
+
+	说明：初始化一个Wilddog节点
+
+	返回：一个wilddog节点
+
+getValue()
+
+	定义：int getValue(CallBackFunc f_callback,void *arg)
+
+	说明：设置节点的值
+	
+	参数：f_callback 回调函数
+		 arg 用户自定义参数（可为NULL）
+	
+	返回：返回 0:成功 <0:失败。
+
+setValue()
+
+	定义：int setValue(const char *p_data,CallBackFunc f_callback,void *arg)
+  
+	说明：向云端设置该节点的值
+	
+	参数：p_data 节点的值，为json字符串
+		 f_callback 回调函数
+		 arg 用户自定义参数（可为NULL）
+
+	返回：返回 0:成功 <0:失败。
+
+push()
+
+	定义：int push(const char *p_data,CallBackFunc f_callback,void *arg)
+
+	说明：在当前节点下生成一个子节点，并返回子节点的引用。子节点的key利用服务端的当前时间生成。
+
+	参数：p_data 节点的值，为json字符串
+		 f_callback 回调函数
+		 arg 用户自定义参数（可为NULL）
+
+	返回：返回 0:成功 <0:失败。
+
+removeValue()
+
+	定义：int removeValue(CallBackFunc f_callback,void *arg)
+
+	说明：删除当前节点
+
+	参数：f_callback 回调函数
+		 arg 用户自定义参数（可为NULL）
+
+	返回：返回 0:成功 <0:失败。
+
+addObserver()
+
+	定义：int addObserver(Wilddog_EventType_T event,CallBackFunc f_callback,void *arg)
+
+	说明：监听节点下的某个事件,注册回调函数
+
+	参数：event 事件类型（目前只能设为1）
+		 f_callback 回调函数
+		 arg 用户自定义参数（可为NULL）
+
+	返回：返回 0:成功 <0:失败。
+
+removeObserver()
+
+	定义：int removeObserver(Wilddog_EventType_T event)
+
+	说明：取消监听事件。取消之前用addObserver()注册的回调函数
+
+	参数：event 事件类型（目前只能设为1）
+
+	返回：返回 0:成功 <0:失败。
+
+auth()
+
+	定义：int auth(const char *p_auth,const char *p_host,CallBackFunc onAuth,void *arg)
+
+	说明：发送auth数据到服务器进行认证
+
+	参数：p_auth auth数据
+		 p_host 节点的host（如appid.wilddogio.com）
+		 onAuth 回调函数
+		 arg 用户自定义参数（可为NULL）
+
+trySync()
+
+	定义：void trySync()
+
+	说明：通过调用wilddog_trySync来向Wilddog云端同步数据。每次调用都会处理来自云端的推送和请求超时的重发、长连接的维持 ，以及触发用户注册的回调函数。
