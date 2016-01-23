@@ -20,14 +20,14 @@
   
   uasge:
   1. Creat an application on  https://www.wilddog.com/dashboard. 
-     This sketch will push an message {"pin13":"1"}  to the application your just build.    
-  2. Modify YOURURL to your application.
+     This sketch will remove all data in YOURURL.
+  2. Modify YOURURL to your real URL，also can be like 
+	 coap://YourAppId.wilddogio.com/a/b/c .
   3. Upload to your Arduino.
-  4. In your application ,You will see {"pin13":"1"} have beed delete by Arduino.
-  
-  
-  This example code is in the public domain.
+  4. In your application ,You will see data in YOURURL deleted by Arduino.
     
+  This example code is in the public domain.
+
   created on 2015/11/20.
   by skyli.
   
@@ -45,13 +45,12 @@ Wilddog *p_wd = NULL;
                       
 void removeCallBack(const char *pdata, int error, void* arg)
 {
-  Serial.print("\n get error : ");
+  Serial.print("\n remove error : ");
   Serial.print(error);
-  if(pdata)
+  if(error >= 200)
   {
-      Serial.print("\n get receive  data : ");
-      Serial.print(pdata);
-    }
+    Serial.print("\n remove success!\n");
+  }
   if (arg)
      Serial.print(*(char*)arg);
 }

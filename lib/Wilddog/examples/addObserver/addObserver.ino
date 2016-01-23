@@ -19,14 +19,13 @@
   
   uasge:
   1. Creat an application on  https://www.wilddog.com/dashboard. 
-     Add {"pin13":"1"} to your application which this sketch ask for.
+     This sketch will get the newest data in the cloud.
             
   2. Modify YOURURL to your application.
   3. Upload to your Arduino.
-  4.Open the Arduino IDE's Serial port monitor,and it will print the cloud data.
-  5. Modify your application's data to {"pin13":"0"} and Take care L13 on your Arudino.
-  
-  
+  4. Open the Arduino IDE's Serial port monitor,and it will print the cloud data.
+  5. Modify your cloud data to {"pin13":"0"} and Take care L13 on your Arudino.
+
   This example code is in the public domain.
     
   created on 2015/11/20.
@@ -46,8 +45,6 @@
 
 Wilddog *p_wd = NULL;
 
-
-                        
 int getPinValue(const char *src,int pinNumber,int *value)
 {
   char pinName[100],pinValue[100];
@@ -80,10 +77,10 @@ void handleReceivePacket(const char *src)
       
    return ;   
 }
-                        
+
 void addObserverCallBack(const char *pdata, int error, void* arg)
 {
-  Serial.print("\n get error : ");
+  Serial.print("\n observe error : ");
   Serial.print(error);
   if(pdata)
   {
@@ -91,7 +88,7 @@ void addObserverCallBack(const char *pdata, int error, void* arg)
       Serial.print(pdata);
       /* get pin no and pin value */
        handleReceivePacket(pdata);
-    }
+  }
   if (arg)
      Serial.print(*(char*)arg);
 }

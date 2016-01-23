@@ -13,48 +13,13 @@
 
 ####1、配置ArduinoYun
 
-对出厂状态下的Arduino Yun进行配置，如果之前已经有过配置，可以略过这一步。
-
-#####连接网络
-
-出厂时，Arduino Yun默认为Ap模式，你需要用电脑或者手机通过wifi连接你的Arduino Yun。其ssid名字的格式为`ArduinoYun-XXXXXXXXXXXX`，
-打开浏览器，在地址栏输入`http://arduino.local`或者`192.168.240.1`，按下`Enter`后会看到以下网页。
-
-![](./doc/res/YunWebPassword.png)
-
-登录密码框中输入`arduino`（ArduinoYun默认登录密码为`arduino`），点击`LOG IN`进入以下页面，该页面展示Arduino Yun当前的网络信息。
-
-![](./doc/res/YunWebDiagnostic.png)
-
-
-点击`CONFIGURE`进入配置页面，如下
-
-![](./doc/res/YunWebConfig.png)
-
-在`WIRELESS NAME` 中输入你想要的连接的wifi名称，`SECURITY` 中选择加密方式，`PASSWORD`中输入wifi密码，点击`CONFIGURE & RESTART`,Arduino Yun会自动重启并连接你所配置的网络。
-
-![](./doc/res/YunRebooting.png )
-	
-#####获取ArduinoYun的IP
-
-利用`SSH`登录Arduino Yun需要获取Arduino Yun的IP，可以直接登录路由获取，也可以用`Arduino 1.6.6`或者以上版本的IDE获取。将Arduino Yun保持上电，打开`Arduino IDE`，选择`工具-->端口`如下图：
-
-![](./doc/res/getIP.png )
-	
-#####SSH登录ArduinoYun
-
-`SecureCRT`自带文件传输工具，这里以`SecureCRT`为例。打开`SecureCRT`，选择`file-->Quick Connect`，在`Hostname`框中输入Arduino Yun的IP，`name`输入`root`，如下图：
-
-![](./doc/res/SecureCrt_ssh_config.png )
-
-点击`Connect`后弹出下图，输入密码登录`arduino`（默认），进入以下界面说明`SSH`登录成功。
-
-![](./doc/res/SecureCrt_ssh_ok.png )
-
+注意，如果Arduino Yun为出厂状态，需要进行配置，可参看doc目录下的`ArduinoYun-Configuration.md`，如果之前已经有过配置，可以略过。
 
 ####2、安装Wilddog库
 
 #####在联网模块中安装守护进程及依赖库
+
+ssh远程登陆到Arduino Yun联网模块，使用lrzsz命令搭配SercureCRT进行ftp传输，将platform/ArduinoYun/目录下的ipk下载到Arduino Yun并安装：
 
 	root@Arduino:~# opkg update
 	root@Arduino:~# opkg install lrzsz
@@ -76,7 +41,6 @@
 	1、把`wilddog` 放置到Arduino IDE的`libraries`目录下.
 	2、更新库，打开Arduino IDE，点击`项目-->管理库`，IDE会自动更新库，并在选择框里输入`wilddog`，出现下图说明库安装成功.
 	
-
 ![](./doc/res/arduino_ide_updata.png )
 
 ###第二步 创建账号和应用
