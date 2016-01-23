@@ -20,15 +20,17 @@
   
   uasge:
   1. Creat an application on  https://www.wilddog.com/dashboard. 
-     Add {"pin13":"1"} to your application which this sketch ask for.
-            
+     This sketch will get the data in YOURURL, and, if the value is like 
+	 {"pinx": "1"}, the x's pin will set to be 1(if value is "0", will be set
+	  to 0).
+
   2. Modify YOURURL to your application.
   3. Upload to your ArduinoYun.
-  4. Open the Arduino IDE's Serial port monitor,and it will print the cloud data.
-  
+  4. Open the Arduino IDE's Serial port monitor,and it will print the 
+     data in the URL.
   
   This example code is in the public domain.
-    
+
   created on 2015/11/20.
   by skyli.
   
@@ -40,7 +42,6 @@
 /*modify YourAppId to your appid*/
 #define YOURURL  "coap://YourAppId.wilddogio.com"
 #define _KEY_PIN  "pin"
-
 
 #define _MAX_PIN_   13
 

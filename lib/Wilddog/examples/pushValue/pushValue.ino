@@ -19,17 +19,18 @@
   
   uasge:
   1. Creat an application on  https://www.wilddog.com/dashboard. 
-     This sketch will push an message {"pin13":"1"}  to the application your just build.    
+     This sketch will push SETTING_DATA to your application.    
   2. Modify YOURURL to your application.
   3. Upload to your Arduino.
-  4. Open the Arduino IDE's Serial port monitor,and it will print serial number that your message have save .
-     And you will see {"pin13":"1"} already on your application's data .
-  
+  4. Open Arduino IDE's Serial port monitor, and it will print the path 
+     your data stored. And you will see node "pin13":"1" already in your 
+	 application's data .
+
   This example code is in the public domain.
-    
+
   created on 2015/11/20.
   by skyli.
-  
+
   https://www.wilddog.com/  
   for more information.
 */
@@ -44,13 +45,13 @@ Wilddog *p_wd = NULL;
                       
 void pushCallBack(const char *pdata, int error, void* arg)
 {
-  Serial.print("\n get error : ");
+  Serial.print("\n push error : ");
   Serial.print(error);
   if(pdata)
   {
       Serial.print("\n get path : ");
       Serial.print(pdata);
-    }
+  }
   if (arg)
      Serial.print(*(char*)arg);
 }
@@ -65,9 +66,9 @@ void setup() {
   while (!Serial);
   
   Serial.print(YOURURL);
-  p_wd = new  Wilddog(YOURURL);   
+  p_wd = new Wilddog(YOURURL);   
   Serial.print("\n push \n");
-  // set value on Wilddog yun.
+  // push value to Wilddog cloud.
   res = p_wd->push(SETTING_DATA,pushCallBack,(void*)NULL);
   if(res < 0 )
      Serial.print("\n push fail \n ");
@@ -75,7 +76,6 @@ void setup() {
 
 void loop()
 {
-  //Serial.print("trysyncing ...\n");   
   // receive and transmit.
   if(p_wd)
     p_wd->trySync();

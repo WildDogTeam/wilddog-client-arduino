@@ -20,10 +20,10 @@
   uasge:
   
   1. Creat an application on  https://www.wilddog.com/dashboard. 
-     This sketch will push an message {"pin13":"1"}  to the application your just build.    
+     This sketch will put data SETTING_DATA to the application you build.
   2. Modify YOURURL to your application url.
   3. Upload to your Arduino.
-  4. You will see {"pin13":"0"} already on your application's data.
+  4. You will see {"pin13":"1"} already in your application's data.
   
   
   This example code is in the public domain.
@@ -39,19 +39,18 @@
 #include "Wilddog_utility.h"
 /*modify YourAppId to your appid*/
 #define YOURURL  "coap://YourAppId.wilddogio.com"
-#define SETTING_DATA "{\"pin13\":\"0\"}"
+#define SETTING_DATA "{\"pin13\":\"1\"}"
 
 Wilddog *p_wd = NULL;
                         
 void setValueCallBack(const char *pdata, int error, void* arg)
 {
-  Serial.print("\n get error : ");
+  Serial.print("\n set error : ");
   Serial.print(error);
-  if(pdata)
+  if(error >= 200)
   {
-      Serial.print("\n get data : ");
-      Serial.print(pdata);
-    }
+      Serial.print("\n set data success!\n");
+  }
   if (arg)
      Serial.print(*(char*)arg);
 }
