@@ -45,7 +45,7 @@ ssh 远程登陆到 Arduino Yun 联网模块，使用 lrzsz 命令搭配 Sercure
 
 ###第二步 创建账号和应用
 
-[**注册**](https://www.wilddog.com/account/signup)并登录WildDog账号，进入控制面板。在控制面板中，添加一个新的应用。
+[**注册**](https://www.wilddog.com/my-account/signup)并登录WildDog账号，进入控制面板。在控制面板中，添加一个新的应用。
 
 你会获得一个独一无二的应用`URL` `https://<appId>.wilddogio.com/`，在同步和存取数据的时候，你的数据将保存在这个`URL`下。
 
