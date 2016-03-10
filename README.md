@@ -4,7 +4,7 @@
 	├── lib
 	├── platform
 
-	`lib`: Arduino IDE中的库，包含库代码、供用户调用的接口及示例.
+	`lib`: Arduino IDE 中的库，包含库代码、供用户调用的接口及示例.
 	`platform`:不同平台下的实现，在 Arduino Yun 中是守护进程及依赖库的ipk安装文件.
 
 ## 使用步骤
@@ -13,7 +13,7 @@
 
 ####1、配置Arduino Yun
 
-注意，如果 Arduino Yun 为出厂状态，需要进行配置，可参看doc目录下的`ArduinoYun-Configuration.md`，如果之前已经有过配置，可以略过。
+注意，如果 Arduino Yun 为出厂状态，需要进行配置，可参看 doc 目录下的`ArduinoYun-Configuration.md`，如果之前已经有过配置，可以略过。
 
 ####2、安装 Wilddog 库
 
@@ -45,7 +45,7 @@ ssh 远程登陆到 Arduino Yun 联网模块，使用 lrzsz 命令搭配 Sercure
 
 ###第二步 创建账号和应用
 
-[**注册**](https://www.wilddog.com/my-account/signup)并登录WildDog账号，进入控制面板。在控制面板中，添加一个新的应用。
+[**注册**](https://www.wilddog.com/my-account/signup)并登录 WildDog 账号，进入控制面板。在控制面板中，添加一个新的应用。
 
 你会获得一个独一无二的应用`URL` `https://<appId>.wilddogio.com/`，在同步和存取数据的时候，你的数据将保存在这个`URL`下。
 
