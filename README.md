@@ -39,7 +39,7 @@ ssh 远程登陆到 Arduino Yun 联网模块，使用 lrzsz 命令搭配 Sercure
 #####在Arduino IDE中安装Wilddog库
 
 	1、把lib目录下的 Wilddog 文件夹放置到 Arduino IDE 的 libraries 目录下.
-	2、更新库，打开 Arduino IDE，点击`项目-->管理库`，IDE 会自动更新库，并在选择框里输入 Wilddog，出现下图说明库安装成功.
+	2、更新库，打开 Arduino IDE，点击`项目-->加载库-->管理库`，IDE 会自动更新库，并在选择框里输入 Wilddog，出现下图说明库安装成功.
 	
 ![](./doc/res/arduino_ide_updata.png )
 
